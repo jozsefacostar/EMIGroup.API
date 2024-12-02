@@ -1,0 +1,4 @@
+﻿// Ubicarse en la raiz del proyecto en la carpeta donde estan los proyectos
+//C:\Proyectos personales\Grupo_EMI\EMI_Group\Microservices\02. Employees
+//dotnet ef migrations add InitialMigration -p "Infraestructure" -s "Web.Employee.API" -o "Persistence/Migrations" --context ApplicationDbContext
+//dotnet ef database update -p "Infraestructure" -s "Web.Employee.API" --context ApplicationDbContext

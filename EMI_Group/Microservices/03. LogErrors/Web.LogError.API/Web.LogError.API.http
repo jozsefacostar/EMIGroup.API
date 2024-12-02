@@ -1,0 +1,6 @@
+@Web.LogError.API_HostAddress = http://localhost:5290
+
+GET {{Web.LogError.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
