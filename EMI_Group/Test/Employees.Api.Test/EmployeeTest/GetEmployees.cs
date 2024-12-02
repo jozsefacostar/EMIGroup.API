@@ -49,7 +49,7 @@ namespace Order.Api.Tests.CustomerTest
         public async Task ShouldReturnFailureIfTheNameIsEmpty()
         {
             // Arrange
-            var command = new CreateEmployeeCommand("123456", "", 1, 1, 568000000, DateTime.Now.AddYears(-1), null);
+            var command = new CreateEmployeeCommand("123456", "", 1, 568000000, DateTime.Now.AddYears(-1), null);
 
             // Act
             var result = await _mediator.Send(command);
@@ -63,7 +63,7 @@ namespace Order.Api.Tests.CustomerTest
         public async Task ShouldReturnFailureIfTheIdentificaciónIsNull()
         {
             // Arrange
-            var command = new CreateEmployeeCommand("", "Sandra Martinez", 1, 1, 568000000, DateTime.Now.AddYears(-1), null);
+            var command = new CreateEmployeeCommand("", "Sandra Martinez", 1, 568000000, DateTime.Now.AddYears(-1), null);
 
             // Act
             var result = await _mediator.Send(command);
@@ -77,7 +77,7 @@ namespace Order.Api.Tests.CustomerTest
         public async Task ShouldReturnFailureIfThePositionIsZero()
         {
             // Arrange
-            var command = new CreateEmployeeCommand("110254851", "Sandra Martinez", 0, 1, 568000000, DateTime.Now.AddYears(-1), null);
+            var command = new CreateEmployeeCommand("110254851", "Sandra Martinez", 0, 568000000, DateTime.Now.AddYears(-1), null);
 
             // Act
             var result = await _mediator.Send(command);
@@ -91,7 +91,7 @@ namespace Order.Api.Tests.CustomerTest
         public async Task ShouldReturnFailureIfTheSalaryIsZero()
         {
             // Arrange
-            var command = new CreateEmployeeCommand("110254851", "Sandra Martinez", 1, 1, 0, DateTime.Now.AddYears(-1), null);
+            var command = new CreateEmployeeCommand("110254851", "Sandra Martinez", 1, 0, DateTime.Now.AddYears(-1), null);
 
             // Act
             var result = await _mediator.Send(command);

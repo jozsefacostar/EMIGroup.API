@@ -107,7 +107,7 @@ namespace Infraestructure.Persistence.Repositories
         public async Task<List<Employee>> GetEmployeesByDepartmentAndProjectQuery(string code)
         {
             // Iniciamos la consulta con AsNoTracking para mejorar el rendimiento en lecturas
-            var queryEmployees = _context.Employees.Include(x=>x.CurrentPositionNavigation).ThenInclude(x=>x.DepartmentNavigation).Include(x=>x.LstEmployeeEmployeeProject).AsNoTracking();
+            var queryEmployees = _context.Employees.Include(x => x.CurrentPositionNavigation).ThenInclude(x => x.DepartmentNavigation).Include(x => x.LstEmployeeEmployeeProject).AsNoTracking();
 
             /* Están relacionados a un departamento */
             queryEmployees = queryEmployees.Where(x =>
@@ -144,7 +144,8 @@ namespace Infraestructure.Persistence.Repositories
                 PositionId = employee.CurrentPosition != null ? (int)employee.CurrentPosition : null,
                 EmployeeId = isNew ? _context.Entry(employee).Property(e => e.Id).CurrentValue : employee.Id,
                 DateRange = new Domain.ValueObjects.DateRange(startDate, endDate),
-                Salary = employee.Salary
+                Salary = employee.Salary,
+                AuditInfo = new Domain.ValueObjects.AuditInfo(isNew ? DateTime.Now : null, isNew ? employee.AuditInfo.CreatedBy : null, !isNew ? DateTime.Now : null, !isNew ? employee.AuditInfo.CreatedBy : null, true)
             };
             await _context.PositionHistories.AddAsync(newPositionHistory);
             return true;

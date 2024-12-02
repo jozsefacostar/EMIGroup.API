@@ -1,5 +1,6 @@
 ﻿
 using Auth.DomainGateway;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.OpenApi.Models;
 using Web.Employee.API.Middlewares.GlobalExceptions;
 

@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces.IEmployee;
 using Domain.Primitives;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Shared;
 
 namespace Application.Modules.Employees.Commands;
@@ -10,17 +11,20 @@ public sealed class CreateEmployeeCommandHandle : IRequestHandler<CreateEmployee
 {
     private readonly IWriteEmployeeRepository _EmployeeRepository;
 
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
     private readonly IUnitOfWork _unitofWork;
 
-    public CreateEmployeeCommandHandle(IWriteEmployeeRepository EmployeeRepository, IUnitOfWork unitOfWork)
+    public CreateEmployeeCommandHandle(IWriteEmployeeRepository EmployeeRepository, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor)
     {
         _EmployeeRepository = EmployeeRepository ?? throw new ArgumentNullException(nameof(EmployeeRepository));
         _unitofWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+        _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
     }
 
     public async Task<RequestResult<Unit>> Handle(CreateEmployeeCommand command, CancellationToken cancellationToken)
     {
-        var newEmployee = new Domain.Entities.Employee(command.IdNum, command.Name, command.CurrentPosition, command.Salary);
+        var newEmployee = new Domain.Entities.Employee(command.IdNum, command.Name, command.CurrentPosition, command.Salary, _httpContextAccessor.HttpContext?.Items["UserId"] as int?,null);
         var (success, result) = await _EmployeeRepository.Create(newEmployee, command.startDate, command.endDate);
         if (!success)
             return RequestResult<Unit>.ErrorRecord(result);

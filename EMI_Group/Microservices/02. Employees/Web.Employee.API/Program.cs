@@ -3,15 +3,17 @@ using HealthChecks.UI.Client;
 using Infraestructure;
 using Infraestructure.Configurations;
 using Infraestructure.Persistence;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using NLog;
 using NLog.Web;
 using Web.API.Extensions;
-using Web.API.Middlewares;
 using Web.Employee.API;
 using Web.Employee.API.EndPoints;
+using Web.Employee.API.Middlewares.Authetication;
 using Web.Employee.API.Middlewares.GlobalExceptions;
+using Web.Employee.API.Middlewares.HealthCheck;
 
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -55,7 +57,8 @@ try
     app.UseHealthChecksUI(delegate (HealthChecks.UI.Configuration.Options options) { options.UIPath = "/healthcheck-ui"; });
     // Configure the HTTP request pipeline.
     app.UseHttpsRedirection();
-    app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+    app.UseMiddleware<GlobalExceptionHandlingMiddleware>();   
+    app.UseMiddleware<AuthenticationMiddlewareAPI>();
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

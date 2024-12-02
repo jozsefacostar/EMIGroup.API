@@ -7,7 +7,7 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
 {
     public CreateEmployeeCommandValidator()
     {
-        RuleFor(r => r.IdNum).NotEmpty().WithName("Identificación");
+        RuleFor(r => r.IdNum).NotEmpty().MaximumLength(15).WithName("Identificación");
         RuleFor(r => r.Name).NotEmpty().MaximumLength(200).WithName("Nombre");
         RuleFor(r => r.CurrentPosition).NotEmpty().GreaterThan(0).WithName("Posición actual");
         RuleFor(r => r.Salary).NotEmpty().GreaterThan(0).WithName("Salario");

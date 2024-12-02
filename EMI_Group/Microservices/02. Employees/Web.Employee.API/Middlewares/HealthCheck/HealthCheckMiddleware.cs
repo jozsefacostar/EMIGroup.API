@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 
-namespace Web.API.Middlewares
+namespace Web.Employee.API.Middlewares.HealthCheck
 {
     public static class HealthCheckMiddleware
     {
@@ -60,7 +60,7 @@ namespace Web.API.Middlewares
 
         public Task<HealthCheckResult> CheckHealthAsync(
             HealthCheckContext context,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var options = _options.Get(context.Registration.Name);
 
@@ -73,7 +73,7 @@ namespace Web.API.Middlewares
             { "Gen1Collections", GC.CollectionCount(1) },
             { "Gen2Collections", GC.CollectionCount(2) },
         };
-            var status = (allocated < options.Threshold) ? HealthStatus.Healthy : HealthStatus.Unhealthy;
+            var status = allocated < options.Threshold ? HealthStatus.Healthy : HealthStatus.Unhealthy;
 
             return Task.FromResult(new HealthCheckResult(
                 status,

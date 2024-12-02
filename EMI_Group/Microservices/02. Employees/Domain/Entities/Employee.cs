@@ -11,13 +11,13 @@ namespace Domain.Entities
             LstPositionHistoryEmployee = new HashSet<PositionHistory>();
             LstEmployeeEmployeeProject = new HashSet<EmployeeProject>();
         }
-        public Employee(string idNum, string name, int position, decimal salary)
+        public Employee(string idNum, string name, int position, decimal salary, int? CreatedBy, int? ModifiedBy)
         {
             IdNum = idNum;
             Name = name;
             CurrentPosition = position;
             Salary = salary;
-            AuditInfo = new AuditInfo(DateTime.Now, null, null, null, true);
+            AuditInfo = new AuditInfo(CreatedBy != null ? DateTime.Now: null, CreatedBy, ModifiedBy != null ? DateTime.Now : null, ModifiedBy, true);
         }
 
 
