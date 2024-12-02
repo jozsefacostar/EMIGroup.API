@@ -17,7 +17,10 @@ namespace Web.Employee.API.EndPoints
             //Endpoint POST / brokers
             app.MapPost($"{BaseRoute}/listen", ListenMessagesBroker)
                 .WithName("ListenMessagesBroker")
-                .Produces<RequestResult<bool>>(200)
+                .Produces<RequestResult<bool>>(200) // Respuesta 200 OK
+                .Produces<RequestResult<bool>>(400) // Respuesta 400 Bad Request
+                .Produces<RequestResult<bool>>(401) // Respuesta 401 Unauthorized
+                .Produces<RequestResult<bool>>(403) // Respuesta 403 Forbidden
                 .WithDescription("Lee los mensajes de una cola")
                 .WithOpenApi()
                 .RequireAuthorization(authSettings.AdminRole);
@@ -25,7 +28,10 @@ namespace Web.Employee.API.EndPoints
             // Endpoint POST /brokers
             app.MapPost($"{BaseRoute}/publish", PublishMessageBroker)
                 .WithName("PublishMessageBroker")
-                .Produces<RequestResult<bool>>(200)
+                .Produces<RequestResult<bool>>(200) // Respuesta 200 OK
+                .Produces<RequestResult<bool>>(400) // Respuesta 400 Bad Request
+                .Produces<RequestResult<bool>>(401) // Respuesta 401 Unauthorized
+                .Produces<RequestResult<bool>>(403) // Respuesta 403 Forbidden
                 .WithDescription("Publica un mensaje a una cola")
                 .WithOpenApi()
                 .RequireAuthorization(authSettings.AdminRole);

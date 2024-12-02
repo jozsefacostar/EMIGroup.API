@@ -16,8 +16,12 @@ public class EmployeesTransactionEndPoints : IEndpoints
         // Endpoint POST /EmployeesTransaction
         app.MapPost($"{BaseRoute}/AnnualCalculatedIncreaseAllEmployee", AnnualCalculatedIncreaseAllEmployee)
         .WithName("AnnualCalculatedIncreaseAllEmployee")
-        .Produces<RequestResult<List<EmployeeResponseDTO>>>(200)
-        .Produces<RequestResult<dynamic>>(400)
+        .Produces<RequestResult<bool>>(200) // Respuesta 200 OK
+        .Produces<RequestResult<bool>>(400) // Respuesta 400 Bad Request
+        .Produces<RequestResult<bool>>(401) // Respuesta 401 Unauthorized
+        .Produces<RequestResult<bool>>(403) // Respuesta 403 Forbidden
+
+
         .WithDescription("Función que calcula el aumento anual para todos los empleados")
         .WithOpenApi()
         .RequireAuthorization(authSettings.AdminRole);
@@ -25,8 +29,10 @@ public class EmployeesTransactionEndPoints : IEndpoints
         // Endpoint POST /EmployeesTransaction
         app.MapPost($"{BaseRoute}/RegisterEmployeeProject", RegisterEmployeeProject)
         .WithName("RegisterEmployeeProject")
-        .Produces<RequestResult<Unit>>(200)
-        .Produces<RequestResult<Unit>>(400)
+        .Produces<RequestResult<Unit>>(200) // Respuesta 200 OK
+        .Produces<RequestResult<Unit>>(400) // Respuesta 400 Bad Request
+        .Produces<RequestResult<Unit>>(401) // Respuesta 401 Unauthorized
+        .Produces<RequestResult<Unit>>(403) // Respuesta 403 Forbidden
         .WithDescription("Función que relaciona un empleado a un proyecto")
         .WithOpenApi()
         .RequireAuthorization(authSettings.AdminRole);

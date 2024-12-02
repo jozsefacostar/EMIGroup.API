@@ -11,7 +11,7 @@ namespace Domain.Entities
             LstPositionHistoryEmployee = new HashSet<PositionHistory>();
             LstEmployeeEmployeeProject = new HashSet<EmployeeProject>();
         }
-        public Employee(string idNum, string name, int position, int Department, decimal salary)
+        public Employee(string idNum, string name, int position, decimal salary)
         {
             IdNum = idNum;
             Name = name;

@@ -20,7 +20,7 @@ namespace Infraestructure
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("SqlServer")));
             services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
-            services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IUnitOfWorkGateway>(sp => sp.GetRequiredService<ApplicationDbContext>());
             services.AddScoped<IAuthRepository, AuthRepository>();
             return services;
         }

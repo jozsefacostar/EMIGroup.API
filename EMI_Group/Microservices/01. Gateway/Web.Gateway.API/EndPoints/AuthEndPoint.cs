@@ -27,7 +27,10 @@
             // Endpoint POST /Auth/Create
             app.MapPost($"{BaseRoute}/Register", Register)
                 .WithName("Create")
-                .Produces<RequestResult<Unit>>(200)
+                .Produces<RequestResult<Unit>>(200) // Respuesta 200 OK
+                .Produces<RequestResult<Unit>>(400) // Respuesta 400 Bad Request
+                .Produces<RequestResult<Unit>>(401) // Respuesta 401 Unauthorized
+                .Produces<RequestResult<Unit>>(403) // Respuesta 403 Forbidden
                 .WithDescription("Permite crear un nuevo usuario")
                 .WithOpenApi()
                 .RequireAuthorization(authSettings.AdminRole);

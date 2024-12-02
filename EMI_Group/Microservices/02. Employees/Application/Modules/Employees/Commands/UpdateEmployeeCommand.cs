@@ -4,7 +4,7 @@ using MediatR;
 using Shared;
 
 namespace Application.Modules.Employees.Commands;
-public record UpdateEmployeeCommand(string IdNum, string Name, int CurrentPosition, decimal Salary, int department, DateTime startDate, DateTime? endDate) : IRequest<RequestResult<Unit>>;
+public record UpdateEmployeeCommand(string IdNum, string Name, int CurrentPosition, decimal Salary, DateTime startDate, DateTime? endDate) : IRequest<RequestResult<Unit>>;
 
 public sealed class UpdateEmployeeCommandHandle : IRequestHandler<UpdateEmployeeCommand, RequestResult<Unit>>
 {
@@ -20,7 +20,7 @@ public sealed class UpdateEmployeeCommandHandle : IRequestHandler<UpdateEmployee
 
     public async Task<RequestResult<Unit>> Handle(UpdateEmployeeCommand command, CancellationToken cancellationToken)
     {
-        var (success, result) = await _EmployeeRepository.Update(new Domain.Entities.Employee(command.IdNum, command.Name, command.CurrentPosition, command.department, command.Salary), command.startDate, command.endDate);
+        var (success, result) = await _EmployeeRepository.Update(new Domain.Entities.Employee(command.IdNum, command.Name, command.CurrentPosition, command.Salary), command.startDate, command.endDate);
         if (!success)
             return RequestResult<Unit>.ErrorRecord(result);
         await _unitofWork.SaveChangesAsync();

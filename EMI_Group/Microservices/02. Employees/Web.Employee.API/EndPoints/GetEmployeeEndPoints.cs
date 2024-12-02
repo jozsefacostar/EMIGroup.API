@@ -15,15 +15,21 @@ public class GetEmployeeEndpoints : IEndpoints
         // Endpoint GET /Employees
         app.MapGet($"{BaseRoute}", GetAllEmployees)
             .WithName("GetAllEmployees")
-            .Produces<RequestResult<List<EmployeeResponseDTO>>>(200)
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(200) // Respuesta 200 OK
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(400) // Respuesta 400 Bad Request
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(401) // Respuesta 401 Unauthorized
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(403) // Respuesta 403 Forbidden
             .WithDescription("Obtener la lista de todos los empleados")
             .WithOpenApi()
             .RequireAuthorization();
 
         // Endpoint GET /Employees
-        app.MapGet($"{BaseRoute}/GetByIdEmployee/{{id}}", GetByIdEmployee)
+        app.MapGet($"{BaseRoute}/GetByIdEmployee/{{idNum}}", GetByIdEmployee)
             .WithName("GetByIdEmployee")
-            .Produces<RequestResult<List<EmployeeResponseDTO>>>(200)
+           .Produces<RequestResult<List<EmployeeResponseDTO>>>(200) // Respuesta 200 OK
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(400) // Respuesta 400 Bad Request
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(401) // Respuesta 401 Unauthorized
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(403) // Respuesta 403 Forbidden
             .WithDescription("Obtener un empleado")
             .WithOpenApi()
             .RequireAuthorization(authSettings.AdminRole);
@@ -31,7 +37,10 @@ public class GetEmployeeEndpoints : IEndpoints
         // Endpoint GET /Employees
         app.MapGet($"{BaseRoute}/GetEmployeesByDepartmentAndProjects/{{codeDeparment}}", GetEmployeesByDepartmentAndProject)
             .WithName("GetEmployeesByDepartmentAndProjects")
-            .Produces<RequestResult<List<EmployeeResponseDTO>>>(200)
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(200) // Respuesta 200 OK
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(400) // Respuesta 400 Bad Request
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(401) // Respuesta 401 Unauthorized
+            .Produces<RequestResult<List<EmployeeResponseDTO>>>(403) // Respuesta 403 Forbidden
             .WithDescription("Busca todos los empleados que forman parte de un departamento específico y están trabajando en al menos un proyecto")
             .WithOpenApi()
             .RequireAuthorization(authSettings.AdminRole);

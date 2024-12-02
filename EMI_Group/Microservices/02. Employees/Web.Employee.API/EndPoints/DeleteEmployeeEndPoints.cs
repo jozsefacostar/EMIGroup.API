@@ -17,7 +17,10 @@ public class DeleteEmployeeEndpoints : IEndpoints
         // Endpoint DELETE /Employees
         app.MapDelete($"{BaseRoute}/DeleteById/{{id}}", DeleteEmployee)
             .WithName("DeleteEmployee")
-            .Produces<RequestResult<Unit>>(200)
+            .Produces<RequestResult<Unit>>(200) // Respuesta 200 OK
+            .Produces<RequestResult<Unit>>(400) // Respuesta 400 Bad Request
+            .Produces<RequestResult<Unit>>(401) // Respuesta 401 Unauthorized
+            .Produces<RequestResult<Unit>>(403) // Respuesta 403 Forbidden
             .WithDescription("Elimina un empleado")
             .WithOpenApi()
             .RequireAuthorization(authSettings.AdminRole);

@@ -29,11 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Gateway", "Microserv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure", "Microservices\01. Gateway\Infraestructure\Infraestructure.csproj", "{2DB47DEE-B11B-4859-B18F-26624DFD768F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Gateway.API", "Microservices\01. Gateway\Web.Gateway.API\Web.Gateway.API.csproj", "{21A4A074-DCC6-48C0-B87C-7F355278113F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Gateway.API", "Microservices\01. Gateway\Web.Gateway.API\Web.Gateway.API.csproj", "{21A4A074-DCC6-48C0-B87C-7F355278113F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. LogErrors", "03. LogErrors", "{BFBC45B4-560B-4D0C-9717-8D68D8619467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.LogError.API", "Microservices\03. LogErrors\Web.LogError.API\Web.LogError.API.csproj", "{0EB18FC6-9191-4304-B3A0-BFC97790B5D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.LogError.API", "Microservices\03. LogErrors\Web.LogError.API\Web.LogError.API.csproj", "{0EB18FC6-9191-4304-B3A0-BFC97790B5D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Api.Test", "Test\Employees.Api.Test\Employees.Api.Test.csproj", "{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{0EB18FC6-9191-4304-B3A0-BFC97790B5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EB18FC6-9191-4304-B3A0-BFC97790B5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EB18FC6-9191-4304-B3A0-BFC97790B5D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{21A4A074-DCC6-48C0-B87C-7F355278113F} = {8C1E018F-409E-4466-94A2-FA58D7E849F4}
 		{BFBC45B4-560B-4D0C-9717-8D68D8619467} = {27B9D469-9102-42B7-B7C3-049871D8D408}
 		{0EB18FC6-9191-4304-B3A0-BFC97790B5D6} = {BFBC45B4-560B-4D0C-9717-8D68D8619467}
+		{E06C1ECF-F507-4B92-82A8-C85BB0EFBE30} = {115008CE-FEFD-4818-884F-0F9EBD7D50C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B3FB76AE-FC4D-493E-8247-D79FBE2ED556}

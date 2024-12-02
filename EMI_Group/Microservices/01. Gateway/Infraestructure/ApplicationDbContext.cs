@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Infraestructure.Persistence
 {
 
-    public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
+    public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWorkGateway
     {
         private readonly IPublisher _publisher;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher)
