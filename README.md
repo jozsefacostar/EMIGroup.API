@@ -43,7 +43,7 @@ Se creó una API en MongoDB, la cual no se pide en la prueba, pero me pareció i
 1. **Clonar el repositorio**:
 
    ```bash
-   git clone https://github.com/jozsefacostar/Samtel_Test.git](https://github.com/jozsefacostar/EMIGroup.API.git)
+   https://github.com/jozsefacostar/EMIGroup.API.git
 
 Ejecutar las APIs de forma general. Hay que subir las APIS de Web.Gateway.API, Web.Employee.API, Web.LogError.API.
 
